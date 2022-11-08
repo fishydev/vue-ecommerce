@@ -9,5 +9,15 @@ import NavbarComponentVue from "./components/global/NavbarComponent.vue";
     <NavbarComponentVue />
   </header>
 
-  <!-- <RouterView /> -->
+  <main>
+    <RouterView />
+  </main>
 </template>
+
+<style>
+main {
+  max-width: 105rem;
+  padding: 0px 2rem;
+  margin: 0px auto;
+}
+</style>
