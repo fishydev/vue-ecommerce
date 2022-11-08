@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { ElIcon } from "element-plus";
+</script>
+
 <template>
   <header class="navbar">
     <div class="navbar-container center">
@@ -7,7 +11,7 @@
           <span>Shop</span>
         </div>
         <div class="col">
-          <span>Cart</span>
+          <el-icon :size="30"><ShoppingCartFull /></el-icon>
           <span>Login</span>
         </div>
       </div>
