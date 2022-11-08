@@ -47,4 +47,41 @@ const heroCards = [
   },
 ];
 
-export { heroCards, heroImages };
+const footerNavigations = [
+  {
+    title: "Product",
+    pages: [
+      "True Wireless Earbuds",
+      "Wireless Headphones",
+      "Wired Headphones",
+      "Wireless Speakers",
+      "Mobile Accessories",
+      "Smart Watches",
+      "TRebel",
+      "Misfit",
+    ],
+  },
+  {
+    title: "Brand",
+    pages: [
+      "About Us",
+      "Blog",
+      "Brand Assets",
+      "Newsletter",
+      "Points of Sale",
+      "Sustainable Practices",
+    ],
+  },
+  {
+    title: "Support",
+    pages: [
+      "Customer Support",
+      "Returns & Exchanges",
+      "Product Support",
+      "Orders & Shipping",
+      "Contacts",
+    ],
+  },
+];
+
+export { heroCards, heroImages, footerNavigations };
