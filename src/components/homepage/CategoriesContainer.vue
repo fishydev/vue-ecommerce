@@ -6,7 +6,7 @@ import { categories } from "@/db";
 
 <template>
   <div class="categories-container">
-    <p>Categories</p>
+    <h3>Categories</h3>
     <div class="categories-wrapper">
       <card-component
         class="category-card"
