@@ -1,6 +1,6 @@
 <template>
   <header class="navbar">
-    <div class="navbar-container">
+    <div class="navbar-container center">
       <div class="navbar-main-wrapper">
         <div class="col">
           <img class="logo" src="@/assets/shopy-logo.png" alt="shopy-logo" />
@@ -21,12 +21,6 @@
   max-width: 100vw;
 }
 
-.navbar-container {
-  max-width: 105rem;
-  padding: 0px 2rem;
-  margin: 0px auto;
-}
-
 .navbar-main-wrapper > .col {
   display: flex;
   align-items: center;
@@ -40,7 +34,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 0px;
+  padding: 1rem;
 }
 
 .logo {
