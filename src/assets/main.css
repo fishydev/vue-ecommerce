@@ -10,3 +10,7 @@ header {
   padding: 0px 2rem;
   margin: 0px auto;
 }
+
+.layout-wrapper {
+  padding: 1rem;
+}
