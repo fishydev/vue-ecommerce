@@ -30,10 +30,8 @@ defineProps<{
 }
 
 img {
-  width: 225px;
-  height: 225px;
+  max-width: 100%;
   background-color: lightgrey;
-  padding: 1rem;
 }
 
 .discount-ribbon {
