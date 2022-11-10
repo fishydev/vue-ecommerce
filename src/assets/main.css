@@ -14,3 +14,7 @@ header {
 .layout-wrapper {
   padding: 1rem;
 }
+
+button {
+  font-family: inherit;
+}

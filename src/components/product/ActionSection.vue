@@ -36,5 +36,6 @@ section {
   text-transform: uppercase;
   border: 1px solid black;
   border-radius: 2px;
+  font-weight: bold;
 }
 </style>
