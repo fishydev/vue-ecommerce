@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { RouterLink } from "vue-router";
 import { ElIcon } from "element-plus";
 </script>
 
@@ -7,8 +8,12 @@ import { ElIcon } from "element-plus";
     <div class="navbar-container center">
       <div class="navbar-main-wrapper">
         <div class="col">
-          <img class="logo" src="@/assets/shopy-logo.png" alt="shopy-logo" />
-          <span>Shop</span>
+          <RouterLink to="/">
+            <img class="logo" src="@/assets/shopy-logo.png" alt="shopy-logo" />
+          </RouterLink>
+          <RouterLink to="/products">
+            <span>Shop</span>
+          </RouterLink>
         </div>
         <div class="col">
           <el-icon :size="30"><ShoppingCartFull /></el-icon>
@@ -20,6 +25,10 @@ import { ElIcon } from "element-plus";
 </template>
 
 <style>
+a {
+  text-decoration: none;
+}
+
 .navbar {
   width: 100%;
   max-width: 100vw;
