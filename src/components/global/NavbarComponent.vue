@@ -8,9 +8,12 @@ import { ElIcon } from "element-plus";
     <div class="navbar-container center">
       <div class="navbar-main-wrapper">
         <div class="col">
-          <RouterLink to="/">
-            <img class="logo" src="@/assets/shopy-logo.png" alt="shopy-logo" />
-          </RouterLink>
+          <img
+            class="logo"
+            src="@/assets/shopy-logo.png"
+            alt="shopy-logo"
+            @click="$router.push('/')"
+          />
           <RouterLink to="/products">
             <span>Shop</span>
           </RouterLink>
@@ -51,6 +54,7 @@ a {
 }
 
 .logo {
-  height: 2rem;
+  height: 2.25rem;
+  cursor: pointer;
 }
 </style>
