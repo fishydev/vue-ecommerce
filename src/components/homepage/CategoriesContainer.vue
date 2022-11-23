@@ -1,22 +1,69 @@
 <script setup lang="ts">
-import { ElCard } from "element-plus";
+import { onMounted, ref } from "vue";
+import { ElSkeleton, ElSkeletonItem } from "element-plus";
 import CardComponent from "../global/CardComponent.vue";
-import { categories } from "@/db";
+
+import { getCategories } from "@/api";
+import type { Category } from "@/types";
+
+const categories = ref([] as Category[]);
+const loading = ref(true);
+
+const fetchCategories = async () => {
+  try {
+    const result = await getCategories();
+
+    categories.value = result.data;
+  } catch (error) {
+    //do something
+  } finally {
+    loading.value = false;
+  }
+};
+
+onMounted(async () => {
+  fetchCategories();
+});
 </script>
 
 <template>
   <div class="categories-container">
     <h3>Categories</h3>
-    <div class="categories-wrapper">
+    <!-- <div class="categories-wrapper">
       <card-component
         class="category-card"
         v-for="category in categories"
-        :key="category._id"
+        :key="category.id"
       >
-        <img :src="category.src" :alt="category.alt" />
+        <img :src="category.imageUrl" :alt="category.alt" />
         <span>{{ category.type }}</span>
       </card-component>
-    </div>
+    </div> -->
+    <el-skeleton
+      :loading="loading"
+      animated
+      :count="3"
+      class="categories-wrapper"
+    >
+      <template #template>
+        <card-component class="category-card card-skeleton">
+          <el-skeleton-item class="img-skeleton" />
+          <el-skeleton-item class="span-skeleton" />
+        </card-component>
+      </template>
+      <template #default>
+        <div class="categories-wrapper">
+          <card-component
+            class="category-card"
+            v-for="category in categories"
+            :key="category.id"
+          >
+            <img :src="category.imageUrl" :alt="category.alt" />
+            <span>{{ category.type }}</span>
+          </card-component>
+        </div>
+      </template>
+    </el-skeleton>
   </div>
 </template>
 
@@ -46,5 +93,15 @@ img {
   width: 250px;
   height: 250px;
   margin-bottom: 1rem;
+}
+
+.img-skeleton {
+  width: 250px;
+  height: 250px;
+  margin-bottom: 1rem;
+}
+
+.span-skeleton {
+  width: 100px;
 }
 </style>
