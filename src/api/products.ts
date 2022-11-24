@@ -1,10 +1,8 @@
 import axios from "@/lib/axios";
+import type { ProductFilter } from "@/types";
 
-export const getProducts = async (typeUuids?: string[], colors?: string[]) => {
-  return axios.get("/product", {
-    data: {
-      ...(typeUuids && typeUuids.length > 0 && { type: typeUuids }),
-      ...(colors && colors.length > 0 && { type: colors }),
-    },
+export const getProducts = async (filters?: ProductFilter) => {
+  return axios.post("/product", {
+    data: filters,
   });
 };
