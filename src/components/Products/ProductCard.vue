@@ -1,12 +1,16 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import CardComponent from "../global/CardComponent.vue";
-defineProps<{
+const props = defineProps<{
   name: string;
   price: number;
-  ogPrice: number;
   discount: number;
   image: string;
 }>();
+
+const discountedPrice = computed(() => {
+  return Math.round(props.price - (props.price * props.discount) / 100);
+});
 </script>
 
 <template>
@@ -16,8 +20,8 @@ defineProps<{
     <div class="product-detail">
       <span class="product-name">{{ name }}</span>
       <div class="product-price">
-        <span class="price">{{ `Rs. ${price}` }}</span>
-        <span class="og-price">{{ `Rs. ${ogPrice}` }}</span>
+        <span class="price">{{ `Rs. ${discountedPrice}` }}</span>
+        <span class="og-price">{{ `Rs. ${price}` }}</span>
       </div>
     </div>
   </card-component>
