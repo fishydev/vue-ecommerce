@@ -10,12 +10,17 @@ defineProps<{
 
 <template>
   <div class="product-list-wrapper layout-wrapper">
-    <RouterLink to="/detail" v-for="product in products" :key="product.uuid">
+    <RouterLink
+      :to="`/product/${product.uuid}`"
+      v-for="product in products"
+      :key="product.uuid"
+    >
       <ProductCard
         :name="product.productTitle"
         :image="product.imageUrl"
         :discount="product.discountPercentage"
         :price="product.price"
+        :alt="product.alt"
       />
     </RouterLink>
   </div>
