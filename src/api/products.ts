@@ -6,3 +6,7 @@ export const getProducts = async (filters?: ProductFilter) => {
     data: filters,
   });
 };
+
+export const getProductByUuid = async (uuid: string) => {
+  return axios.get(`/product/${uuid}`);
+};
