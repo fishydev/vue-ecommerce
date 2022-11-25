@@ -11,7 +11,7 @@ import { ElIcon } from "element-plus";
           <RouterLink to="/" class="img-href">
             <img class="logo" src="@/assets/shopy-logo.png" alt="shopy-logo" />
           </RouterLink>
-          <RouterLink to="/products">
+          <RouterLink to="/product/list">
             <span>Shop</span>
           </RouterLink>
         </div>
