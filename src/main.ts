@@ -4,6 +4,7 @@ import { createPinia } from "pinia";
 import App from "./App.vue";
 import router from "./router";
 import ElementPlus from "element-plus";
+import { vue3Debounce } from "vue-debounce";
 import "element-plus/dist/index.css";
 import * as ElementPlusIconsVue from "@element-plus/icons-vue";
 
@@ -18,4 +19,5 @@ app.use(createPinia());
 app.use(router);
 
 app.use(ElementPlus);
+app.directive("debounce", vue3Debounce({ lock: true }));
 app.mount("#app");
