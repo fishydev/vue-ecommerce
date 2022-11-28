@@ -53,7 +53,8 @@ const changedFilter = () => {
     <el-input
       v-model="searchQuery"
       clearable
-      @change="changedFilter"
+      v-debounce:1s="changedFilter"
+      :debounce-events="'change'"
       placeholder="Search keyword..."
     />
     <el-collapse>

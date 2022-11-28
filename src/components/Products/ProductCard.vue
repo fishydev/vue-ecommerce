@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import CardComponent from "../global/CardComponent.vue";
-import { ElImage } from "element-plus";
+import { ElImage, ElIcon } from "element-plus";
 import { Picture as IconPicture } from "@element-plus/icons-vue";
 
 const props = defineProps<{
@@ -25,6 +25,11 @@ const discountedPrice = computed(() => {
         <div class="image-slot">
           <el-icon><icon-picture /></el-icon>
         </div>
+      </template>
+      <template #placeholder>
+        <el-image
+          src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
+        />
       </template>
     </el-image>
     <div class="product-detail">
