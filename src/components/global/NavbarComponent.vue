@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
 import { ElIcon } from "element-plus";
+import CartDialog from "../cart/CartDialog.vue";
 </script>
 
 <template>
@@ -16,7 +17,7 @@ import { ElIcon } from "element-plus";
           </RouterLink>
         </div>
         <div class="col">
-          <el-icon :size="30"><ShoppingCartFull /></el-icon>
+          <CartDialog />
           <span>Login</span>
         </div>
       </div>
@@ -31,6 +32,7 @@ a {
 
 .img-href {
   height: 2.25rem;
+  margin-right: 1rem;
 }
 
 .navbar {
