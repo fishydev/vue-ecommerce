@@ -16,7 +16,7 @@ axios.interceptors.response.use(
     if (error.response && error.response.data) {
       ElNotification({
         title: "Error",
-        message: `${error.message.data} (${error.response})`,
+        message: `${error.response.data} (${error.response.status})`,
         type: "error",
       });
     } else {
