@@ -1,7 +1,12 @@
 <script setup lang="ts">
+import { inject, type Ref } from "vue";
 import { RouterLink } from "vue-router";
-import { ElIcon } from "element-plus";
+import { ElIcon, ElDialog, ElButton } from "element-plus";
 import CartDialog from "../cart/CartDialog.vue";
+import { ShoppingCartFull } from "@element-plus/icons-vue";
+
+const isVisibleCartDialog = inject<Ref<boolean>>("isVisibleCart")!;
+const isVisibleLoginDialog = inject<Ref<boolean>>("isVisibleLogin")!;
 </script>
 
 <template>
@@ -17,8 +22,15 @@ import CartDialog from "../cart/CartDialog.vue";
           </RouterLink>
         </div>
         <div class="col">
-          <CartDialog />
-          <span>Login</span>
+          <ElButton
+            class="btn-cart-dialog"
+            :icon="ShoppingCartFull"
+            size="large"
+            @click="isVisibleCartDialog = true"
+            circle
+            link
+          />
+          <ElButton @click="isVisibleLoginDialog = true" text>Login</ElButton>
         </div>
       </div>
     </div>

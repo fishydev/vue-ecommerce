@@ -2,9 +2,9 @@
 import CartDialogItem from "./CartDialogItem.vue";
 import { ShoppingCartFull } from "@element-plus/icons-vue";
 import { ElDialog, ElButton } from "element-plus";
-import { ref } from "vue";
+import { ref, inject, type Ref } from "vue";
 
-const isVisible = ref(false);
+const isVisible = inject<Ref<boolean>>("isVisibleCart");
 const items = ref([
   {
     imageUrl:
@@ -35,21 +35,9 @@ const items = ref([
     amount: 1,
   },
 ]);
-
-const openCart = () => {
-  isVisible.value = true;
-};
 </script>
 
 <template>
-  <ElButton
-    class="btn-cart-dialog"
-    :icon="ShoppingCartFull"
-    @click="openCart"
-    size="large"
-    circle
-    link
-  />
   <ElDialog v-model="isVisible" title="My Cart">
     <CartDialogItem
       v-for="index in 2"
