@@ -15,6 +15,7 @@ const changeFilterHandler = (filters: ProductFilter) => {
 
 const fetchProducts = async (filters?: ProductFilter) => {
   try {
+    products.value = [];
     isLoading.value = true;
     const result = (await getProducts(filters)).data;
     products.value = result;
