@@ -18,3 +18,7 @@ header {
 button {
   font-family: inherit;
 }
+
+.el-button {
+  text-transform: uppercase;
+}
