@@ -38,7 +38,7 @@ onMounted(async () => {
   </div>
 </template>
 
-<style>
+<style scoped>
 .products-view {
   display: flex;
 }

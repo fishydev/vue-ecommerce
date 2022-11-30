@@ -37,7 +37,7 @@ const isVisibleLoginDialog = inject<Ref<boolean>>("isVisibleLogin")!;
   </header>
 </template>
 
-<style>
+<style scoped>
 a {
   text-decoration: none;
 }

@@ -3,6 +3,7 @@ import CartDialogItem from "./CartDialogItem.vue";
 import { ShoppingCartFull } from "@element-plus/icons-vue";
 import { ElDialog, ElButton } from "element-plus";
 import { ref, inject, type Ref } from "vue";
+import { RouterLink } from "vue-router";
 
 const isVisible = inject<Ref<boolean>>("isVisibleCart");
 const items = ref([
@@ -60,20 +61,22 @@ const items = ref([
           color="#EEEEEE"
           >View Cart</ElButton
         >
-        <ElButton
-          class="btn-checkout"
-          size="large"
-          type="primary"
-          bg
-          color="#000000"
-          >Checkout</ElButton
-        >
+        <RouterLink to="/checkout" @click="isVisible = false">
+          <ElButton
+            class="btn-checkout"
+            size="large"
+            type="primary"
+            bg
+            color="#000000"
+            >Checkout</ElButton
+          >
+        </RouterLink>
       </div>
     </template>
   </ElDialog>
 </template>
 
-<style>
+<style scoped>
 .cart-content-wrapper {
   display: flex;
   flex-direction: column;

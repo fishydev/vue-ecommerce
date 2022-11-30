@@ -23,6 +23,7 @@ const openLogin = () => {
     v-model="isVisibleRegister"
     title="Register"
     class="dialog-register"
+    width="400px"
   >
     <div class="register-form-wrapper">
       <h1 class="heading-register-dialog">Good to have you here!</h1>
@@ -45,7 +46,7 @@ const openLogin = () => {
           <ElInput type="password" />
         </ElFormItem>
       </ElForm>
-      <ElButton>Create your account</ElButton>
+      <ElButton bg color="#000000" size="large">Create your account</ElButton>
     </div>
     <template #footer>
       <div class="register-footer">
@@ -56,11 +57,7 @@ const openLogin = () => {
   </ElDialog>
 </template>
 
-<style>
-.dialog-register {
-  max-width: 400px;
-}
-
+<style scoped>
 .register-form-wrapper {
   display: flex;
   flex-direction: column;

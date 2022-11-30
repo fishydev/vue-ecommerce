@@ -19,7 +19,12 @@ const showRegister = () => {
 </script>
 
 <template>
-  <ElDialog v-model="isVisibleLogin" title="Login" class="dialog-login">
+  <ElDialog
+    v-model="isVisibleLogin"
+    title="Login"
+    class="dialog-login"
+    width="400px"
+  >
     <div class="login-form-wrapper">
       <h1 class="heading-login-dialog">Welcome back!</h1>
       <ElForm :label-position="'top'">
@@ -31,7 +36,7 @@ const showRegister = () => {
         </ElFormItem>
       </ElForm>
       <span class="link-forgot-password">Forgot your password?</span>
-      <ElButton>Sign In</ElButton>
+      <ElButton bg color="#000000" size="large">Sign In</ElButton>
     </div>
     <template #footer>
       <div class="login-footer">
@@ -44,11 +49,7 @@ const showRegister = () => {
   </ElDialog>
 </template>
 
-<style>
-.dialog-login {
-  max-width: 400px;
-}
-
+<style scoped>
 .login-form-wrapper {
   display: flex;
   flex-direction: column;

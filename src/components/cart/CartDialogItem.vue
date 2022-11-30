@@ -25,7 +25,7 @@ defineProps<{
   </div>
 </template>
 
-<style>
+<style scoped>
 .cart-item-wrapper {
   display: flex;
   align-items: center;

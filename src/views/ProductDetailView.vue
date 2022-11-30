@@ -53,7 +53,7 @@ onMounted(async () => {
   </div>
 </template>
 
-<style>
+<style scoped>
 .detail-view {
   display: flex;
   align-items: center;

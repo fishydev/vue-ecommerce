@@ -12,7 +12,7 @@ defineProps<{
   </div>
 </template>
 
-<style>
+<style scoped>
 .nav-section {
   display: flex;
   flex-direction: column;

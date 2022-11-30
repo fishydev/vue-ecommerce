@@ -36,7 +36,7 @@ defineProps<{
   </div>
 </template>
 
-<style>
+<style scoped>
 .product-list-container {
   flex-grow: 1;
 }

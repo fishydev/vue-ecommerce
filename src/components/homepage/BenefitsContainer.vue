@@ -24,7 +24,7 @@ import { ElIcon } from "element-plus";
   </div>
 </template>
 
-<style>
+<style scoped>
 .benefits-container {
   display: flex;
   justify-content: center;
