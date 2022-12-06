@@ -6,15 +6,118 @@ import {
   ElFormItem,
   ElInput,
   ElLink,
+  ElNotification,
+  type FormInstance,
+  type FormRules,
 } from "element-plus";
-import { ref, inject, type Ref } from "vue";
+import { ref, reactive, inject, type Ref } from "vue";
+import { register } from "@/api";
+import type { RegisterPayload } from "@/types";
+import isEmail from "validator/lib/isEmail";
 
 const isVisibleLogin = inject<Ref<boolean>>("isVisibleLogin")!;
 const isVisibleRegister = inject<Ref<boolean>>("isVisibleRegister")!;
 
+const formRef = ref<FormInstance>();
+const isLoading = ref<boolean>(false);
+
 const openLogin = () => {
   isVisibleRegister.value = false;
   isVisibleLogin.value = true;
+};
+
+const formData = reactive<RegisterPayload & { confirmPassword: string }>({
+  email: "",
+  firstName: "",
+  lastName: "",
+  password: "",
+  confirmPassword: "",
+});
+
+const validateEmail = (rule: any, value: any, callback: any) => {
+  if (value === "") {
+    callback(new Error("Please enter your email address"));
+  } else {
+    if (!isEmail(value)) {
+      callback(new Error("Please enter a valid email address"));
+    }
+    callback();
+  }
+};
+
+const validateConfirmPass = (rule: any, value: any, callback: any) => {
+  if (value === "") {
+    callback(new Error("Please enter your password again"));
+  } else if (value !== formData.password) {
+    callback(new Error("Password doesn't match"));
+  } else {
+    callback();
+  }
+};
+
+const formRules = reactive<FormRules>({
+  email: [
+    {
+      validator: validateEmail,
+      trigger: "blur",
+    },
+  ],
+  password: [
+    {
+      required: true,
+      message: "Please enter a password",
+      trigger: "blur",
+    },
+    {
+      min: 8,
+      max: 20,
+      trigger: "blur",
+      message: "Length should be 8-20 characters",
+    },
+  ],
+  confirmPassword: [
+    {
+      validator: validateConfirmPass,
+      trigger: "blur",
+    },
+  ],
+  firstName: [
+    {
+      required: true,
+      trigger: "blur",
+      message: "Please enter your first name",
+    },
+  ],
+  lastName: [
+    {
+      required: true,
+      trigger: "blur",
+      message: "Please enter your last name",
+    },
+  ],
+});
+
+const onSubmit = async (formEl: FormInstance | undefined) => {
+  if (!formEl) return;
+  formEl.validate(async (valid) => {
+    if (valid) {
+      submitRegister();
+    }
+  });
+};
+
+const submitRegister = async () => {
+  try {
+    isLoading.value = true;
+    const result = (await register(formData)).data;
+    ElNotification({
+      type: "success",
+      message: result,
+    });
+    isVisibleRegister.value = false;
+  } finally {
+    isLoading.value = false;
+  }
 };
 </script>
 
@@ -27,26 +130,39 @@ const openLogin = () => {
   >
     <div class="register-form-wrapper">
       <h1 class="heading-register-dialog">Good to have you here!</h1>
-      <ElForm :label-position="'top'">
+      <ElForm
+        ref="formRef"
+        :model="formData"
+        :rules="formRules"
+        :label-position="'top'"
+        :disabled="isLoading"
+      >
         <div class="form-name">
-          <ElFormItem label="First Name">
-            <ElInput type="text" />
+          <ElFormItem label="First Name" prop="firstName">
+            <ElInput v-model="formData.firstName" type="text" />
           </ElFormItem>
-          <ElFormItem label="Last Name">
-            <ElInput type="text" />
+          <ElFormItem label="Last Name" prop="lastName">
+            <ElInput v-model="formData.lastName" type="text" />
           </ElFormItem>
         </div>
-        <ElFormItem label="Email">
-          <ElInput type="email" />
+        <ElFormItem label="Email" prop="email">
+          <ElInput v-model="formData.email" type="email" />
         </ElFormItem>
-        <ElFormItem label="Password">
-          <ElInput type="password" />
+        <ElFormItem label="Password" prop="password">
+          <ElInput v-model="formData.password" type="password" />
         </ElFormItem>
-        <ElFormItem label="Confirm Password">
-          <ElInput type="password" />
+        <ElFormItem label="Confirm Password" prop="confirmPassword">
+          <ElInput v-model="formData.confirmPassword" type="password" />
         </ElFormItem>
       </ElForm>
-      <ElButton bg color="#000000" size="large">Create your account</ElButton>
+      <ElButton
+        bg
+        color="#000000"
+        size="large"
+        @click="onSubmit(formRef)"
+        :loading="isLoading"
+        >Create your account</ElButton
+      >
     </div>
     <template #footer>
       <div class="register-footer">
