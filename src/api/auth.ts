@@ -6,5 +6,5 @@ export const register = async (payload: RegisterPayload) => {
 };
 
 export const login = async (payload: LoginPayload) => {
-  return axios.post("/login", payload);
+  return axios.post("/user/auth", payload);
 };

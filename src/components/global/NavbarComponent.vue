@@ -1,16 +1,27 @@
 <script setup lang="ts">
-import { inject, type Ref } from "vue";
+import { inject, computed, type Ref } from "vue";
 import { RouterLink } from "vue-router";
 import { ElIcon, ElDialog, ElButton } from "element-plus";
 import CartDialog from "../cart/CartDialog.vue";
 import { ShoppingCartFull } from "@element-plus/icons-vue";
+import { useAuthStore } from "@/stores/auth";
 
 const isVisibleCartDialog = inject<Ref<boolean>>("isVisibleCart")!;
 const isVisibleLoginDialog = inject<Ref<boolean>>("isVisibleLogin")!;
+
+const auth = useAuthStore();
+
+const isLoggedIn = computed(() => {
+  return auth.getToken !== "";
+});
+
+const logout = async () => {
+  auth.clearToken();
+};
 </script>
 
 <template>
-  <header class="navbar">
+  <nav>
     <div class="navbar-container center">
       <div class="navbar-main-wrapper">
         <div class="col">
@@ -29,12 +40,16 @@ const isVisibleLoginDialog = inject<Ref<boolean>>("isVisibleLogin")!;
             @click="isVisibleCartDialog = true"
             circle
             link
+            v-if="isLoggedIn"
           />
-          <ElButton @click="isVisibleLoginDialog = true" text>Login</ElButton>
+          <ElButton text v-if="isLoggedIn" @click="logout()">Logout</ElButton>
+          <ElButton @click="isVisibleLoginDialog = true" text v-else
+            >Login</ElButton
+          >
         </div>
       </div>
     </div>
-  </header>
+  </nav>
 </template>
 
 <style scoped>
@@ -47,7 +62,7 @@ a {
   margin-right: 1rem;
 }
 
-.navbar {
+nav {
   width: 100%;
   max-width: 100vw;
 }
