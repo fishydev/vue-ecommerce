@@ -13,7 +13,7 @@ import {
 import { ref, reactive, inject, type Ref } from "vue";
 import { register } from "@/api";
 import type { RegisterPayload } from "@/types";
-import isEmail from "validator/lib/isEmail";
+import { isValidEmail } from "@/utils/validation";
 
 const isVisibleLogin = inject<Ref<boolean>>("isVisibleLogin")!;
 const isVisibleRegister = inject<Ref<boolean>>("isVisibleRegister")!;
@@ -34,17 +34,6 @@ const formData = reactive<RegisterPayload & { confirmPassword: string }>({
   confirmPassword: "",
 });
 
-const validateEmail = (rule: any, value: any, callback: any) => {
-  if (value === "") {
-    callback(new Error("Please enter your email address"));
-  } else {
-    if (!isEmail(value)) {
-      callback(new Error("Please enter a valid email address"));
-    }
-    callback();
-  }
-};
-
 const validateConfirmPass = (rule: any, value: any, callback: any) => {
   if (value === "") {
     callback(new Error("Please enter your password again"));
@@ -58,7 +47,7 @@ const validateConfirmPass = (rule: any, value: any, callback: any) => {
 const formRules = reactive<FormRules>({
   email: [
     {
-      validator: validateEmail,
+      validator: isValidEmail,
       trigger: "blur",
     },
   ],
