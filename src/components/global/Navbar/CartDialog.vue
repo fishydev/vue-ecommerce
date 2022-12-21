@@ -53,14 +53,16 @@ const items = ref([
     }}</span>
     <template #footer>
       <div class="cart-footer">
-        <ElButton
-          class="btn-view-cart"
-          size="large"
-          type="primary"
-          bg
-          color="#EEEEEE"
-          >View Cart</ElButton
-        >
+        <RouterLink to="/cart" @click="isVisible = false">
+          <ElButton
+            class="btn-view-cart"
+            size="large"
+            type="primary"
+            bg
+            color="#EEEEEE"
+            >View Cart</ElButton
+          >
+        </RouterLink>
         <RouterLink to="/checkout" @click="isVisible = false">
           <ElButton
             class="btn-checkout"

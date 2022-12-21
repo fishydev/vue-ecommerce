@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import ProductsView from "@/views/ProductsView.vue";
 import ProductDetailView from "@/views/ProductDetailView.vue";
+import CartView from "@/views/CartView.vue";
 import CheckoutView from "@/views/CheckoutView.vue";
 import { useAuthStore } from "@/stores/auth";
 import { ElNotification } from "element-plus";
@@ -23,6 +24,14 @@ const router = createRouter({
       path: "/product/:uuid",
       name: "product-detail",
       component: ProductDetailView,
+    },
+    {
+      path: "/cart",
+      name: "cart",
+      component: CartView,
+      meta: {
+        protected: true,
+      },
     },
     {
       path: "/checkout",

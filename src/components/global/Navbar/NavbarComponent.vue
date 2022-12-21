@@ -2,7 +2,7 @@
 import { inject, computed, type Ref } from "vue";
 import { RouterLink } from "vue-router";
 import { ElIcon, ElDialog, ElButton } from "element-plus";
-import CartDialog from "../cart/CartDialog.vue";
+import CartDialog from "./CartDialog.vue";
 import { ShoppingCartFull } from "@element-plus/icons-vue";
 import { useAuthStore } from "@/stores/auth";
 
