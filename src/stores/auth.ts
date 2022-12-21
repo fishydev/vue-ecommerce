@@ -10,6 +10,9 @@ export const useAuthStore = defineStore("auth", {
     getToken(state) {
       return state.token;
     },
+    isAuth(state) {
+      return state.token ? true : false;
+    },
   },
   actions: {
     setToken(token: string) {

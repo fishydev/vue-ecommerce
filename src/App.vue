@@ -1,18 +1,27 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
-import { ref, provide } from "vue";
+import { ref, provide, onBeforeMount } from "vue";
 import NavbarComponentVue from "./components/global/NavbarComponent.vue";
 import CartDialogVue from "./components/cart/CartDialog.vue";
 import LoginDialogVue from "./components/auth/LoginDialog.vue";
 import RegisterDialogVue from "./components/auth/RegisterDialog.vue";
+import { useAuthStore } from "./stores/auth";
 
 const isVisibleCart = ref(false);
 const isVisibleLogin = ref(false);
 const isVisibleRegister = ref(false);
+const auth = useAuthStore();
 
 provide("isVisibleCart", isVisibleCart);
 provide("isVisibleLogin", isVisibleLogin);
 provide("isVisibleRegister", isVisibleRegister);
+
+onBeforeMount(() => {
+  const storageToken = localStorage.getItem("token");
+  if (storageToken) {
+    auth.setToken(storageToken);
+  }
+});
 </script>
 
 <template>
