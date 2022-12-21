@@ -3,6 +3,8 @@ import HomeView from "../views/HomeView.vue";
 import ProductsView from "@/views/ProductsView.vue";
 import ProductDetailView from "@/views/ProductDetailView.vue";
 import CheckoutView from "@/views/CheckoutView.vue";
+import { useAuthStore } from "@/stores/auth";
+import { ElNotification } from "element-plus";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +28,9 @@ const router = createRouter({
       path: "/checkout",
       name: "checkout",
       component: CheckoutView,
+      meta: {
+        protected: true,
+      },
     },
     // {
     //   path: "/about",
@@ -36,6 +41,20 @@ const router = createRouter({
     //   component: () => import("../views/AboutView.vue"),
     // },
   ],
+});
+
+router.beforeEach(async (to, from, next) => {
+  const auth = useAuthStore();
+
+  if (to.meta.protected && !auth.isAuth) {
+    next({ name: "home" });
+    ElNotification({
+      title: "Not logged in",
+      message: "Please login into your account first",
+      type: "error",
+    });
+  }
+  next();
 });
 
 export default router;
