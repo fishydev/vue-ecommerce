@@ -1,9 +1,30 @@
 <script setup lang="ts">
-import { ElButton } from "element-plus";
-defineProps<{
+import { addItemCart } from "@/api/cart";
+import { ElButton, ElNotification } from "element-plus";
+import { ref, toRaw } from "vue";
+const props = defineProps<{
   image: string;
   alt: string;
+  uuid: string;
 }>();
+
+const isLoading = ref(false);
+
+const addToCart = async () => {
+  try {
+    isLoading.value = true;
+    const result = await addItemCart(toRaw(props.uuid));
+    ElNotification({
+      title: "Success",
+      message: result.data,
+      type: "success",
+    });
+  } catch (err) {
+    //
+  } finally {
+    isLoading.value = false;
+  }
+};
 </script>
 
 <template>
@@ -16,6 +37,8 @@ defineProps<{
       plain
       bg
       color="#000000"
+      :loading="isLoading"
+      @click="addToCart"
       >Add to Cart</ElButton
     >
   </section>

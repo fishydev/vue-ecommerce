@@ -50,3 +50,13 @@ export type LoginPayload = {
   email: string;
   password: string;
 };
+
+export type SummaryItem = {
+  id: number;
+  amount: number;
+  product: {
+    imageUrl: string;
+    productTitle: string;
+    price: number;
+  };
+};

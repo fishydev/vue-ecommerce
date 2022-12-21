@@ -48,7 +48,11 @@ onMounted(async () => {
         :rating="productData.rating"
         :review="productData.reviews"
       />
-      <ActionSection :image="productData.imageUrl" :alt="productData.alt" />
+      <ActionSection
+        :image="productData.imageUrl"
+        :alt="productData.alt"
+        :uuid="productData.uuid"
+      />
     </div>
   </div>
 </template>

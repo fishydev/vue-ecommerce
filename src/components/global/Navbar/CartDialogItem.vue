@@ -3,10 +3,12 @@ import { ref } from "vue";
 import { ElImage } from "element-plus";
 
 defineProps<{
-  title: string;
-  price: number;
   amount: number;
-  imageUrl: string;
+  product: {
+    imageUrl: string;
+    productTitle: string;
+    price: number;
+  };
 }>();
 </script>
 
@@ -14,14 +16,14 @@ defineProps<{
   <div class="cart-item-wrapper">
     <ElImage
       style="width: 4rem; height: 4rem; background-color: lightgrey"
-      :src="imageUrl"
+      :src="product.imageUrl"
       fit="scale-down"
     />
     <div class="cart-item-description">
-      <span class="item-title">{{ title }}</span>
+      <span class="item-title">{{ product.productTitle }}</span>
       <span>{{ `× ${amount}` }}</span>
     </div>
-    <span class="cart-item-price">{{ `Rs. ${price * amount}` }}</span>
+    <span class="cart-item-price">{{ `Rs. ${product.price * amount}` }}</span>
   </div>
 </template>
 

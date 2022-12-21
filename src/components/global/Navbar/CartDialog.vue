@@ -2,55 +2,52 @@
 import CartDialogItem from "./CartDialogItem.vue";
 import { ShoppingCartFull } from "@element-plus/icons-vue";
 import { ElDialog, ElButton } from "element-plus";
-import { ref, inject, type Ref } from "vue";
+import { ref, inject, type Ref, onMounted, onUpdated } from "vue";
 import { RouterLink } from "vue-router";
+import type { SummaryItem } from "@/types";
+import { getCartSummary } from "@/api";
+
+const isLoading = ref(false);
 
 const isVisible = inject<Ref<boolean>>("isVisibleCart");
-const items = ref([
-  {
-    imageUrl:
-      "https://cdn.shopify.com/s/files/1/0057/8938/4802/products/c2386af9-4349-432f-8ba5-2b6aa06025c8_600x.png?v=1668756103",
-    title: "Airdopes 131",
-    price: 480,
-    amount: 1,
-  },
-  {
-    imageUrl:
-      "https://cdn.shopify.com/s/files/1/0057/8938/4802/products/c2386af9-4349-432f-8ba5-2b6aa06025c8_600x.png?v=1668756103",
-    title: "Airdopes 131",
-    price: 480,
-    amount: 3,
-  },
-  {
-    imageUrl:
-      "https://cdn.shopify.com/s/files/1/0057/8938/4802/products/c2386af9-4349-432f-8ba5-2b6aa06025c8_600x.png?v=1668756103",
-    title: "Airdopes 131",
-    price: 480,
-    amount: 2,
-  },
-  {
-    imageUrl:
-      "https://cdn.shopify.com/s/files/1/0057/8938/4802/products/c2386af9-4349-432f-8ba5-2b6aa06025c8_600x.png?v=1668756103",
-    title: "Airdopes 131",
-    price: 480,
-    amount: 1,
-  },
-]);
+const items = ref<SummaryItem[]>([]);
+const remainder = ref<number>(0);
+
+onUpdated(() => {
+  fetchSummary();
+});
+
+const fetchSummary = async () => {
+  try {
+    isLoading.value = true;
+    const result = await getCartSummary();
+    items.value = result.data.content;
+    remainder.value = result.data.remainder;
+  } catch (err) {
+    //
+  } finally {
+    isLoading.value = false;
+  }
+};
 </script>
 
 <template>
   <ElDialog v-model="isVisible" title="My Cart">
-    <CartDialogItem
-      v-for="index in 2"
-      :amount="items[index].amount"
-      :image-url="items[index].imageUrl"
-      :price="items[index].price"
-      :key="index"
-      :title="items[index].title"
-    />
-    <span v-if="items.length > 3" class="remaining-amount">{{
-      `+ ${items.length - 3} Products`
-    }}</span>
+    <div v-if="items && items.length > 0">
+      <CartDialogItem
+        v-for="item in items"
+        :amount="item.amount"
+        :product="item.product"
+        :key="item.id"
+        :title="item.product.productTitle"
+      />
+      <span v-if="remainder > 0" class="remaining-amount">{{
+        `+ ${remainder} Products`
+      }}</span>
+    </div>
+    <div v-else>
+      <p class="text-empty">Nothing in your cart yet. Add some!</p>
+    </div>
     <template #footer>
       <div class="cart-footer">
         <RouterLink to="/cart" @click="isVisible = false">
@@ -82,6 +79,10 @@ const items = ref([
 .cart-content-wrapper {
   display: flex;
   flex-direction: column;
+}
+
+.text-empty {
+  text-align: center;
 }
 
 .remaining-amount {
