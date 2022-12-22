@@ -14,16 +14,16 @@ const props = defineProps<{
       <h1>Summary</h1>
       <div class="row-data">
         <span class="label">Subtotal</span>
-        <span class="value">{{ `Rs. ${totalPrice}` }}</span>
+        <span class="value">{{ `JPY ${totalPrice}` }}</span>
       </div>
       <div class="row-data">
         <span class="label">Shipping fee</span>
-        <span class="value">{{ `Rs. ${totalPrice * 0.05}` }}</span>
+        <span class="value">{{ `JPY ${totalPrice * 0.05}` }}</span>
       </div>
       <ElDivider />
       <div class="row-data">
         <span class="label">Total</span>
-        <span class="value">{{ `Rs. ${totalPrice * 1.05}` }}</span>
+        <span class="value">{{ `JPY ${totalPrice * 1.05}` }}</span>
       </div>
     </div>
     <ElButton

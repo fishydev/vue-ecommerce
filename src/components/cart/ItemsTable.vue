@@ -80,7 +80,7 @@ const deleteHandler = async (cartItemId: number, productName: string) => {
       </ElTableColumn>
       <ElTableColumn prop="price" label="Unit price">
         <template #default="scope">
-          {{ `Rs. ${scope.row.product.price}` }}
+          {{ `JPY ${scope.row.product.price}` }}
         </template>
       </ElTableColumn>
       <ElTableColumn prop="amount" label="Quantity">
