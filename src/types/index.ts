@@ -51,9 +51,10 @@ export type LoginPayload = {
   password: string;
 };
 
-export type SummaryItem = {
+export type CartItem = {
   id: number;
   amount: number;
+  total: number;
   product: {
     imageUrl: string;
     productTitle: string;

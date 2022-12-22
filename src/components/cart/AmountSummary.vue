@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed } from "vue";
 import { ElButton, ElDivider } from "element-plus";
 import { Plus, Minus, CloseBold } from "@element-plus/icons-vue";
+
+const props = defineProps<{
+  totalPrice: number;
+}>();
 </script>
 
 <template>
@@ -10,19 +14,24 @@ import { Plus, Minus, CloseBold } from "@element-plus/icons-vue";
       <h1>Summary</h1>
       <div class="row-data">
         <span class="label">Subtotal</span>
-        <span class="value">Rs. 232</span>
+        <span class="value">{{ `Rs. ${totalPrice}` }}</span>
       </div>
       <div class="row-data">
         <span class="label">Shipping fee</span>
-        <span class="value">Rs. 24</span>
+        <span class="value">{{ `Rs. ${totalPrice * 0.05}` }}</span>
       </div>
       <ElDivider />
       <div class="row-data">
         <span class="label">Total</span>
-        <span class="value">Rs. 69</span>
+        <span class="value">{{ `Rs. ${totalPrice * 1.05}` }}</span>
       </div>
     </div>
-    <ElButton class="btn-checkout" size="large" bg color="#000000"
+    <ElButton
+      class="btn-checkout"
+      size="large"
+      bg
+      color="#000000"
+      :disabled="totalPrice === 0"
       >Proceed to Checkout</ElButton
     >
   </div>
@@ -55,5 +64,9 @@ import { Plus, Minus, CloseBold } from "@element-plus/icons-vue";
 
 .checkout-summary .btn-checkout {
   text-transform: uppercase;
+}
+
+.data-summary-container {
+  margin-bottom: 1rem;
 }
 </style>

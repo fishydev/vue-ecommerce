@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { addItemCart } from "@/api/cart";
+import { addItem } from "@/api/cart";
 import { ElButton, ElNotification } from "element-plus";
 import { ref, toRaw } from "vue";
 const props = defineProps<{
@@ -13,7 +13,7 @@ const isLoading = ref(false);
 const addToCart = async () => {
   try {
     isLoading.value = true;
-    const result = await addItemCart(toRaw(props.uuid));
+    const result = await addItem(toRaw(props.uuid));
     ElNotification({
       title: "Success",
       message: result.data,

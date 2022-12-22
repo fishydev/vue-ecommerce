@@ -1,7 +1,13 @@
 import { getCategories, getCategoryOptions } from "./categories";
 import { getProducts } from "./products";
 import { register, login } from "./auth";
-import { addItemCart, getCartSummary } from "./cart";
+import {
+  addItem,
+  getCartSummary,
+  deleteItem,
+  getCartContent,
+  substractItem,
+} from "./cart";
 
 export {
   getCategories,
@@ -9,6 +15,9 @@ export {
   getProducts,
   register,
   login,
-  addItemCart,
+  addItem,
   getCartSummary,
+  deleteItem,
+  getCartContent,
+  substractItem,
 };

@@ -4,13 +4,13 @@ import { ShoppingCartFull } from "@element-plus/icons-vue";
 import { ElDialog, ElButton } from "element-plus";
 import { ref, inject, type Ref, onMounted, onUpdated } from "vue";
 import { RouterLink } from "vue-router";
-import type { SummaryItem } from "@/types";
+import type { CartItem } from "@/types";
 import { getCartSummary } from "@/api";
 
 const isLoading = ref(false);
 
 const isVisible = inject<Ref<boolean>>("isVisibleCart");
-const items = ref<SummaryItem[]>([]);
+const items = ref<CartItem[]>([]);
 const remainder = ref<number>(0);
 
 onUpdated(() => {
