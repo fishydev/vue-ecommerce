@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import jwt_decode from "jwt-decode";
 
 export const useAuthStore = defineStore("auth", {
   state: () => {
@@ -11,7 +12,10 @@ export const useAuthStore = defineStore("auth", {
       return state.token;
     },
     isAuth(state) {
-      return state.token ? true : false;
+      if (!state.token) return false;
+      const decoded = jwt_decode(state.token) as any;
+      console.log(decoded.exp);
+      return Math.floor(Date.now() / 1000) < decoded.exp;
     },
   },
   actions: {

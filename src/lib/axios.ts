@@ -1,6 +1,7 @@
 import Axios, { type AxiosInstance } from "axios";
 import { ElNotification } from "element-plus";
 import { useAuthStore } from "@/stores/auth";
+import { useRouter } from "vue-router";
 import jwt_decode from "jwt-decode";
 
 const baseUrl = "http://localhost:3000/api/v1";
@@ -24,13 +25,15 @@ axios.interceptors.request.use((config) => {
 axios.interceptors.response.use(
   (response) => {
     const auth = useAuthStore();
+    const router = useRouter();
     if (response.status === 401) {
-      auth.clearToken();
       ElNotification({
         title: "Session Expired",
         message: `Your session has expired. Please login again`,
         type: "error",
       });
+      auth.clearToken();
+      router.push({ name: "home" });
     }
     return response;
   },

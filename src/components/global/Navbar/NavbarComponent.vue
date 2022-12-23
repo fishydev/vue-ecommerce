@@ -12,7 +12,7 @@ const isVisibleLoginDialog = inject<Ref<boolean>>("isVisibleLogin")!;
 const auth = useAuthStore();
 
 const isLoggedIn = computed(() => {
-  return auth.getToken !== "";
+  return auth.isAuth;
 });
 
 const logout = async () => {

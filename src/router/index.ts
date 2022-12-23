@@ -56,12 +56,12 @@ router.beforeEach(async (to, from, next) => {
   const auth = useAuthStore();
 
   if (to.meta.protected && !auth.isAuth) {
-    next({ name: "home" });
     ElNotification({
       title: "Not logged in",
       message: "Please login into your account first",
       type: "error",
     });
+    next({ name: "home" });
   }
   next();
 });
