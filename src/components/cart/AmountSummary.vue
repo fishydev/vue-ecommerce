@@ -18,12 +18,12 @@ const props = defineProps<{
       </div>
       <div class="row-data">
         <span class="label">Shipping fee</span>
-        <span class="value">{{ `JPY ${totalPrice * 0.05}` }}</span>
+        <span class="value">{{ `JPY ${Math.ceil(totalPrice * 0.05)}` }}</span>
       </div>
       <ElDivider />
       <div class="row-data">
         <span class="label">Total</span>
-        <span class="value">{{ `JPY ${totalPrice * 1.05}` }}</span>
+        <span class="value">{{ `JPY ${Math.ceil(totalPrice * 1.05)}` }}</span>
       </div>
     </div>
     <ElButton
