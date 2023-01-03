@@ -18,6 +18,7 @@ const addToCart = async () => {
       title: "Success",
       message: result.data,
       type: "success",
+      offset: 75,
     });
   } catch (err) {
     //

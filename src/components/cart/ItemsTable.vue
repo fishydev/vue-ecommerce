@@ -26,6 +26,7 @@ const addHandler = async (itemUuid: string, productName: string) => {
       type: "success",
       message: `Added one ${productName} to cart`,
       title: "Success",
+      offset: 75,
     });
   } catch (err) {
     //
@@ -40,6 +41,7 @@ const substractHandler = async (cartItemId: number, productName: string) => {
       type: "success",
       message: `Removed one ${productName} from cart`,
       title: "Success",
+      offset: 75,
     });
   } catch (err) {
     //
@@ -54,6 +56,7 @@ const deleteHandler = async (cartItemId: number, productName: string) => {
       type: "success",
       message: `Deleted ${productName} from cart`,
       title: "Success",
+      offset: 75,
     });
   } catch (err) {
     //

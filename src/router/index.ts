@@ -60,6 +60,7 @@ router.beforeEach(async (to, from, next) => {
       title: "Not logged in",
       message: "Please login into your account first",
       type: "error",
+      offset: 75,
     });
     next({ name: "home" });
   }

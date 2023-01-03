@@ -31,6 +31,7 @@ axios.interceptors.response.use(
         title: "Session Expired",
         message: `Your session has expired. Please login again`,
         type: "error",
+        offset: 75,
       });
       auth.clearToken();
       router.push({ name: "home" });
@@ -43,12 +44,14 @@ axios.interceptors.response.use(
         title: "Error",
         message: `${error.response.data} (${error.response.status})`,
         type: "error",
+        offset: 75,
       });
     } else {
       ElNotification({
         title: "Error",
         message: error,
         type: "error",
+        offset: 75,
       });
     }
 

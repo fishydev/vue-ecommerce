@@ -102,6 +102,7 @@ const submitRegister = async () => {
     ElNotification({
       type: "success",
       message: result,
+      offset: 75,
     });
     isVisibleRegister.value = false;
   } finally {

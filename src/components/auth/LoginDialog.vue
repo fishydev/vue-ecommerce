@@ -66,7 +66,7 @@ const submitLogin = async () => {
     ElNotification({
       type: "success",
       message: "You are logged in",
-      duration: 5000,
+      offset: 75,
     });
     auth.setToken(result.token);
     isVisibleLogin.value = false;
