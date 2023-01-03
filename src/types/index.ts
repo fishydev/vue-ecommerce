@@ -61,3 +61,18 @@ export type CartItem = {
     price: number;
   };
 };
+
+export type CheckoutPayload = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  address: string;
+  zipCode: string;
+  city: string;
+  country: string;
+};
+
+export type Country = {
+  code: string;
+  name: string;
+};

@@ -8,7 +8,7 @@ import {
   getCartContent,
   substractItem,
 } from "./cart";
-
+import { checkoutCart } from "./checkout";
 export {
   getCategories,
   getCategoryOptions,
@@ -20,4 +20,5 @@ export {
   deleteItem,
   getCartContent,
   substractItem,
+  checkoutCart,
 };

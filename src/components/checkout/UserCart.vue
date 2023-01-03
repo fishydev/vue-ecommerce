@@ -71,6 +71,14 @@ const subtotal = computed(() => {
         </div>
       </div>
     </div>
+    <ElButton
+      class="btn-checkout"
+      size="large"
+      type="primary"
+      bg
+      color="#000000"
+      >Checkout</ElButton
+    >
   </CardComponent>
 </template>
 
@@ -138,5 +146,14 @@ const subtotal = computed(() => {
 
 span.label {
   color: grey;
+}
+
+.btn-checkout {
+  width: 100%;
+  align-self: center;
+  text-transform: uppercase;
+  border: 1px solid black;
+  border-radius: 2px;
+  font-weight: bold;
 }
 </style>
