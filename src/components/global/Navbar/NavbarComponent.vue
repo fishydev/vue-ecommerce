@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { inject, computed, type Ref } from "vue";
-import { RouterLink } from "vue-router";
-import { ElIcon, ElDialog, ElButton } from "element-plus";
-import CartDialog from "./CartDialog.vue";
+import { RouterLink, useRouter } from "vue-router";
+import { ElButton, ElNotification } from "element-plus";
 import { ShoppingCartFull } from "@element-plus/icons-vue";
 import { useAuthStore } from "@/stores/auth";
 
 const isVisibleCartDialog = inject<Ref<boolean>>("isVisibleCart")!;
 const isVisibleLoginDialog = inject<Ref<boolean>>("isVisibleLogin")!;
 
+const router = useRouter();
 const auth = useAuthStore();
 
 const isLoggedIn = computed(() => {
@@ -17,6 +17,12 @@ const isLoggedIn = computed(() => {
 
 const logout = async () => {
   auth.clearToken();
+  ElNotification({
+    type: "success",
+    message: "You are logged out",
+    offset: 75,
+  });
+  router.push({ name: "home" });
 };
 </script>
 
