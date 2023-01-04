@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
+import { RouterView } from "vue-router";
 import { ref, provide, onBeforeMount } from "vue";
 import NavbarComponentVue from "./components/global/Navbar/NavbarComponent.vue";
 import CartDialogVue from "./components/global/Navbar/CartDialog.vue";

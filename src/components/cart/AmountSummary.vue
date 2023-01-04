@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { computed } from "vue";
 import { ElButton, ElDivider } from "element-plus";
-import { Plus, Minus, CloseBold } from "@element-plus/icons-vue";
 
-const props = defineProps<{
+defineProps<{
   totalPrice: number;
   disabled: boolean;
 }>();

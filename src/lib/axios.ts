@@ -2,7 +2,6 @@ import Axios, { type AxiosInstance } from "axios";
 import { ElNotification } from "element-plus";
 import { useAuthStore } from "@/stores/auth";
 import { useRouter } from "vue-router";
-import jwt_decode from "jwt-decode";
 
 const baseUrl = "http://localhost:3000/api/v1";
 

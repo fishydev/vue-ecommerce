@@ -1,5 +1,4 @@
 import axios from "@/lib/axios";
-import type { Category } from "@/types";
 
 export const getCategories = async () => {
   return axios.get("/category");

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import CardComponent from "../global/CardComponent.vue";
 import LoadingComponent from "../global/LoadingComponent.vue";
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import { ElImage } from "element-plus";
 import type { CartItem } from "@/types";
 

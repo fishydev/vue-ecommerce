@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import {
   ElTable,
   ElTableColumn,
@@ -12,7 +11,7 @@ import type { CartItem } from "@/types";
 import LoadingComponentVue from "../global/LoadingComponent.vue";
 import { addItem, deleteItem, substractItem } from "@/api/cart";
 
-const props = defineProps<{
+defineProps<{
   content: CartItem[];
   loading: boolean;
 }>();

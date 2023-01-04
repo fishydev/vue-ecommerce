@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import CartDialogItem from "./CartDialogItem.vue";
-import { ShoppingCartFull } from "@element-plus/icons-vue";
 import { ElDialog, ElButton } from "element-plus";
-import { ref, inject, type Ref, onMounted, onUpdated } from "vue";
+import { ref, inject, type Ref, onUpdated } from "vue";
 import { RouterLink } from "vue-router";
 import type { CartItem } from "@/types";
 import { getCartSummary } from "@/api";
