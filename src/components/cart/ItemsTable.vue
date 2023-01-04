@@ -70,7 +70,7 @@ const deleteHandler = async (cartItemId: number, productName: string) => {
   <div class="checkout-items-container">
     <h1>Items in my cart</h1>
     <LoadingComponentVue v-if="loading" />
-    <ElTable class="table-checkout" :data="content">
+    <ElTable class="table-checkout" :data="content" v-else>
       <ElTableColumn prop="title" label="Item">
         <template #default="scope">
           <div class="cell-item">

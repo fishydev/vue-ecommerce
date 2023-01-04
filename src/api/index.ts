@@ -6,6 +6,7 @@ import {
   getCartSummary,
   deleteItem,
   getCartContent,
+  getCheckoutCartItems,
   substractItem,
 } from "./cart";
 import { checkoutCart } from "./checkout";
@@ -19,6 +20,7 @@ export {
   getCartSummary,
   deleteItem,
   getCartContent,
+  getCheckoutCartItems,
   substractItem,
   checkoutCart,
 };

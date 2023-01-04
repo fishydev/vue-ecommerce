@@ -5,6 +5,7 @@ import { Plus, Minus, CloseBold } from "@element-plus/icons-vue";
 
 const props = defineProps<{
   totalPrice: number;
+  disabled: boolean;
 }>();
 </script>
 
@@ -31,7 +32,7 @@ const props = defineProps<{
       size="large"
       bg
       color="#000000"
-      :disabled="totalPrice === 0"
+      :disabled="disabled"
       >Proceed to Checkout</ElButton
     >
   </div>

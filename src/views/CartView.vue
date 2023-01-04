@@ -39,7 +39,10 @@ onMounted(() => {
         :loading="isLoading"
         @on-changed-item="fetchCartContent"
       />
-      <AmountSummary :total-price="totalCost" />
+      <AmountSummary
+        :total-price="totalCost"
+        :disabled="cartContent.length < 1"
+      />
     </div>
   </div>
 </template>

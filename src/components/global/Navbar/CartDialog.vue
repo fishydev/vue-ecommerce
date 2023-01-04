@@ -67,6 +67,7 @@ const fetchSummary = async () => {
             type="primary"
             bg
             color="#000000"
+            :disabled="items.length < 1"
             >Checkout</ElButton
           >
         </RouterLink>

@@ -2,22 +2,27 @@
 import {
   ElForm,
   ElInput,
+  ElNotification,
   ElOption,
   ElSelect,
   type FormInstance,
   type FormRules,
 } from "element-plus";
-import { ref, reactive, inject, onMounted, type Ref } from "vue";
+import { ref, reactive, toRaw } from "vue";
 import type { CheckoutPayload, Country } from "@/types";
 import * as countryList from "country-list";
+import { checkoutCart } from "@/api";
+import { useRouter } from "vue-router";
 
-onMounted(() => {
-  // console.log(countryList.getData());
-});
+const router = useRouter();
 
 const formRef = ref<FormInstance>();
-const isLoading = ref<boolean>(false);
 const countries = ref<Country[]>(countryList.getData());
+const isLoading = ref<boolean>(false);
+
+defineProps<{
+  disabled: boolean;
+}>();
 
 const formData = reactive<CheckoutPayload>({
   address: "",
@@ -81,13 +86,31 @@ const formRules = reactive<FormRules>({
   ],
 });
 
-const onSubmit = async (formEl: FormInstance | undefined) => {
+const submitCheckout = async (formEl: FormInstance | undefined) => {
   if (!formEl) return;
   formEl.validate(async (valid) => {
     if (valid) {
-      //SUBMIT DATA
+      checkout();
     }
   });
+};
+
+const checkout = async () => {
+  try {
+    isLoading.value = true;
+    await checkoutCart(toRaw(formData));
+    ElNotification({
+      type: "success",
+      message: "Checkout success! We hope you enjoy our products!",
+      offset: 75,
+      duration: 3000,
+    });
+    router.push({ name: "home" });
+  } catch (error) {
+    //
+  } finally {
+    isLoading.value = false;
+  }
 };
 </script>
 
@@ -99,7 +122,7 @@ const onSubmit = async (formEl: FormInstance | undefined) => {
       :model="formData"
       :rules="formRules"
       label-position="top"
-      :disabled="isLoading"
+      :disabled="isLoading || disabled"
       class="checkout-form"
     >
       <div class="form__full-name">
@@ -136,6 +159,16 @@ const onSubmit = async (formEl: FormInstance | undefined) => {
           </ElSelect>
         </ElFormItem>
       </div>
+      <ElButton
+        class="btn-checkout"
+        size="large"
+        type="primary"
+        bg
+        color="#000000"
+        @click="submitCheckout(formRef)"
+        :disabled="isLoading || disabled"
+        >Checkout</ElButton
+      >
     </ElForm>
   </div>
 </template>
@@ -162,5 +195,14 @@ const onSubmit = async (formEl: FormInstance | undefined) => {
   display: grid;
   grid-template-columns: 1fr 100px;
   column-gap: 8px;
+}
+
+.btn-checkout {
+  width: 100%;
+  align-self: center;
+  text-transform: uppercase;
+  border: 1px solid black;
+  border-radius: 2px;
+  font-weight: bold;
 }
 </style>

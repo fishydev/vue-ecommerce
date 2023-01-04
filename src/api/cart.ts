@@ -19,3 +19,7 @@ export const substractItem = async (cartItemId: number) => {
 export const deleteItem = async (cartItemId: number) => {
   return axios.delete(`/cart/${cartItemId}`);
 };
+
+export const getCheckoutCartItems = async (checkoutId: number) => {
+  return axios.get(`/cart/checkout/${checkoutId}`);
+};

@@ -1,13 +1,10 @@
 import axios from "@/lib/axios";
+import type { CheckoutPayload } from "@/types";
 
 export const getCheckoutHistory = async () => {
   return axios.get("/checkout");
 };
 
-export const checkoutCart = async () => {
-  return axios.post("/checkout");
-};
-
-export const getCheckoutContent = async (checkoutId: number) => {
-  return axios.get(`/checkout/${checkoutId}`);
+export const checkoutCart = async (payload: CheckoutPayload) => {
+  return axios.post("/checkout", payload);
 };
