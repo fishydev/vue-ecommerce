@@ -9,7 +9,8 @@ export const useBreakpoints = () => {
 
   const type = computed(() => {
     if (windowWidth.value < 550) return "xs";
-    if (windowWidth.value >= 550 && windowWidth.value < 1200) return "md";
+    if (windowWidth.value >= 550 && windowWidth.value < 720) return "sm";
+    if (windowWidth.value >= 720 && windowWidth.value < 1200) return "md";
     if (windowWidth.value >= 1200) return "lg";
     return null;
   });
