@@ -28,22 +28,23 @@ const heroCards = [
     id: 1,
 
     src: "https://cdn.shopify.com/s/files/1/0057/8938/4802/files/ad411ANC_85d325c2-656e-45f2-ac75-37bb2f3098b4_2048x.jpg?v=1648453347",
-    alt: "heroCards",
+    mobileSrc:
+      "https://cdn.shopify.com/s/files/1/0057/8938/4802/files/mob-115_1000x_crop_center.png?v=1653562904",
+    alt: "hero 1",
   },
   {
     id: 2,
     src: "https://cdn.shopify.com/s/files/1/0057/8938/4802/files/WEB_2048x.png?v=1648907634",
-    alt: "heroCards",
+    mobileSrc:
+      "https://cdn.shopify.com/s/files/1/0057/8938/4802/files/MOB_129c307b-7dd2-4a7f-af39-8653b5d60000_1000x_crop_center.jpg?v=1654366573",
+    alt: "hero 2",
   },
   {
     id: 3,
     src: "https://cdn.shopify.com/s/files/1/0057/8938/4802/files/Rockerz-235-pro--wBanner_2_2048x.jpg?v=1648635163",
-    alt: "heroCards",
-  },
-  {
-    id: 4,
-    src: "https://cdn.shopify.com/s/files/1/0057/8938/4802/files/banner_sold_outArtboard_2_2000x.jpg?v=1654626201",
-    alt: "heroCards",
+    mobileSrc:
+      "https://cdn.shopify.com/s/files/1/0057/8938/4802/files/Mob-34_fb46c1e1-2245-4d3d-ac89-8bd6ec4f816f_1000x_crop_center.jpg?v=1654668613",
+    alt: "hero 3",
   },
 ];
 

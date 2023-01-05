@@ -16,7 +16,7 @@ defineProps<{
 .nav-section {
   display: flex;
   flex-direction: column;
-  width: 250px;
+  width: 100%;
 }
 
 .nav-title {
@@ -31,5 +31,13 @@ defineProps<{
 
 p {
   margin: 0;
+}
+
+@media only screen and (min-width: 720px) {
+  .nav-section {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+  }
 }
 </style>

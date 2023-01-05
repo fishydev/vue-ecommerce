@@ -2,12 +2,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 header {
-  display: block;
+  position: fixed;
+  top: 0px;
+  width: 100vw;
 }
 
 .center {
-  max-width: 105rem;
-  padding: 0px 2rem;
+  max-width: 100vw;
   margin: 0px auto;
 }
 
@@ -21,4 +22,19 @@ button {
 
 .el-button {
   text-transform: uppercase;
+}
+
+@media only screen and (min-width: 720px) {
+  .center {
+    max-width: 105rem;
+    padding: 0px 2rem;
+    margin: 0px auto;
+  }
+
+  header {
+    display: block;
+    position: initial;
+    width: 100%;
+    max-width: 100vw;
+  }
 }

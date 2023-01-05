@@ -39,8 +39,14 @@ onBeforeMount(() => {
 
 <style>
 main {
-  max-width: 105rem;
-  padding: 0px 2rem;
-  margin: 0px auto;
+  max-width: 100vw;
+}
+
+@media only screen and (min-width: 720px) {
+  main {
+    max-width: 105rem;
+    padding: 0px 2rem;
+    margin: 0px auto;
+  }
 }
 </style>

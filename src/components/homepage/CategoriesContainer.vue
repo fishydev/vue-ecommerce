@@ -104,4 +104,8 @@ img {
 .span-skeleton {
   width: 100px;
 }
+
+h3 {
+  margin: 2rem;
+}
 </style>

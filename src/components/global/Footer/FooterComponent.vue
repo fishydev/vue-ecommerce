@@ -33,12 +33,14 @@ import { footerNavigations } from "@/data";
   padding: 2rem;
   display: flex;
   width: 100%;
+  flex-direction: column;
   justify-content: space-between;
 }
 
 .footer-identity {
   display: flex;
   flex-direction: column;
+  margin-bottom: 1rem;
 }
 
 .socials {
@@ -46,10 +48,30 @@ import { footerNavigations } from "@/data";
 }
 
 .logo {
-  height: 3rem;
+  width: 12rem;
 }
 
 .footer-nav {
   display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 720px) {
+  .footer-nav {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .footer-container {
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .logo {
+    width: 12rem;
+  }
 }
 </style>
