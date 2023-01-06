@@ -13,16 +13,16 @@ defineProps<{
       <h1>Summary</h1>
       <div class="row-data">
         <span class="label">Subtotal</span>
-        <span class="value">{{ `JPY ${totalPrice}` }}</span>
+        <span class="value">{{ `JP¥ ${totalPrice}` }}</span>
       </div>
       <div class="row-data">
         <span class="label">Shipping fee</span>
-        <span class="value">{{ `JPY ${Math.ceil(totalPrice * 0.05)}` }}</span>
+        <span class="value">{{ `JP¥ ${Math.ceil(totalPrice * 0.05)}` }}</span>
       </div>
       <ElDivider />
       <div class="row-data">
         <span class="label">Total</span>
-        <span class="value">{{ `JPY ${Math.ceil(totalPrice * 1.05)}` }}</span>
+        <span class="value">{{ `JP¥ ${Math.ceil(totalPrice * 1.05)}` }}</span>
       </div>
     </div>
     <ElButton

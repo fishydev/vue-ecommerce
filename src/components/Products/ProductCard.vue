@@ -35,8 +35,8 @@ const discountedPrice = computed(() => {
     <div class="product-detail">
       <span class="product-name">{{ name }}</span>
       <div class="product-price">
-        <span class="price">{{ `JPY ${discountedPrice}` }}</span>
-        <span class="og-price">{{ `JPY ${price}` }}</span>
+        <span class="price">{{ `JP¥ ${discountedPrice}` }}</span>
+        <span class="og-price">{{ `JP¥ ${price}` }}</span>
       </div>
     </div>
   </card-component>

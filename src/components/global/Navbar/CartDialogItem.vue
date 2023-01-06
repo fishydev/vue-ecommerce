@@ -22,7 +22,7 @@ defineProps<{
       <span class="item-title">{{ product.productTitle }}</span>
       <span>{{ `× ${amount}` }}</span>
     </div>
-    <span class="cart-item-price">{{ `JPY ${product.price * amount}` }}</span>
+    <span class="cart-item-price">{{ `JP¥ ${product.price * amount}` }}</span>
   </div>
 </template>
 
