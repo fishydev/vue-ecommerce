@@ -43,6 +43,16 @@ const discountedPrice = computed(() => {
 </template>
 
 <style scoped>
+.product-name {
+  font-weight: 600;
+  font-size: medium;
+}
+
+.product-price {
+  font-weight: 600;
+  color: var(--text-gray-1);
+}
+
 .product-card {
   position: relative;
   overflow: hidden;
@@ -51,6 +61,7 @@ const discountedPrice = computed(() => {
 .product-image {
   max-width: 100%;
   background-color: lightgrey;
+  aspect-ratio: 1 / 1;
 }
 
 .discount-ribbon {

@@ -11,6 +11,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 72px 0 0 0;
+  --text-gray-1: #7e7e7e;
 }
 
 @media only screen and (min-width: 720px) {

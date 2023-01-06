@@ -45,6 +45,7 @@ defineProps<{
   grid-template-columns: repeat(4, 1fr);
   column-gap: 1.5rem;
   row-gap: 1.5rem;
+  width: 100%;
 }
 
 a,
