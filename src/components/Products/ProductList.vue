@@ -11,7 +11,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="product-list-container layout-wrapper">
+  <div class="product-list-container">
     <div v-if="loading" class="loading-wrapper">
       <LoadingComponent />
     </div>
@@ -42,9 +42,9 @@ defineProps<{
 }
 .list-wrapper {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: 1.5rem;
-  row-gap: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 1rem;
+  row-gap: 1rem;
   width: 100%;
 }
 
@@ -65,5 +65,15 @@ a:active {
 
 .loading-wrapper {
   flex-grow: 1;
+}
+
+@media only screen and (min-width: 720px) {
+  .list-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 1.5rem;
+    row-gap: 1.5rem;
+    width: 100%;
+  }
 }
 </style>
