@@ -37,23 +37,23 @@ const subtotal = computed(() => {
                 }}</span>
                 <span class="cart-item__amount">{{ `× ${item.amount}` }}</span>
               </div>
-              <span class="cart-item__price">{{ `JP¥ ${item.total}` }}</span>
+              <span class="cart-item__price">{{ `¥${item.total}` }}</span>
             </div>
           </div>
           <div class="user-cart__summary">
             <div class="row">
               <span class="label">Subtotal</span>
-              <span class="value">{{ `JP¥ ${subtotal}` }}</span>
+              <span class="value">{{ `¥${subtotal}` }}</span>
             </div>
             <div class="row">
               <span class="label">Shipping</span>
-              <span class="value">{{ `JP¥ ${0.05 * subtotal}` }}</span>
+              <span class="value">{{ `¥${0.05 * subtotal}` }}</span>
             </div>
           </div>
           <div class="user-cart__total">
             <div class="row">
               <span class="label">Total</span>
-              <span class="value">{{ `JP¥ ${1.05 * subtotal}` }}</span>
+              <span class="value">{{ `¥${1.05 * subtotal}` }}</span>
             </div>
           </div>
         </div>

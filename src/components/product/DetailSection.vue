@@ -20,9 +20,9 @@ const rating = computed(() => {
     <h1>{{ name }}</h1>
     <span class="brand">{{ `By ${brand}` }}</span>
     <p>{{ description }}</p>
-    <span>{{ `JP¥ ${price}` }}</span>
+    <span>{{ `¥${price}` }}</span>
     <div class="product-score">
-      <ElRate v-model="rating" disabled="" />
+      <ElRate v-model="rating" disabled />
       <span>{{ `${review} Reviews` }}</span>
     </div>
   </section>

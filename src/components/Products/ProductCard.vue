@@ -35,8 +35,8 @@ const discountedPrice = computed(() => {
     <div class="product-detail">
       <span class="product-name">{{ name }}</span>
       <div class="product-price">
-        <span class="price">{{ `JP¥ ${discountedPrice}` }}</span>
-        <span class="og-price">{{ `JP¥ ${price}` }}</span>
+        <span class="price">{{ `¥${discountedPrice}` }}</span>
+        <span class="og-price">{{ `¥${price}` }}</span>
       </div>
     </div>
   </card-component>
@@ -45,12 +45,12 @@ const discountedPrice = computed(() => {
 <style scoped>
 .product-name {
   font-weight: 600;
-  font-size: medium;
 }
 
 .product-price {
   font-weight: 600;
   color: var(--text-gray-1);
+  flex-grow: 1;
 }
 
 .product-card {
