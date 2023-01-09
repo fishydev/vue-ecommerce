@@ -47,7 +47,7 @@ const addToCart = async () => {
 
 <style scoped>
 img {
-  height: 25rem;
+  width: 100%;
 }
 section {
   display: flex;
@@ -61,5 +61,11 @@ section {
   border: 1px solid black;
   border-radius: 2px;
   font-weight: bold;
+}
+
+@media only screen and (min-width: 720px) {
+  img {
+    height: 40%;
+  }
 }
 </style>

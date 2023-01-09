@@ -32,7 +32,8 @@ const rating = computed(() => {
 section {
   display: flex;
   flex-direction: column;
-  width: 30rem;
+  max-width: 100%;
+  padding: 1rem;
 }
 
 h1 {
@@ -56,5 +57,11 @@ h1 {
   text-transform: capitalize;
   font-weight: bold;
   font-size: small;
+}
+
+@media only screen and (min-width: 720px) {
+  section {
+    width: 60%;
+  }
 }
 </style>

@@ -61,6 +61,7 @@ onMounted(async () => {
 .detail-view {
   display: flex;
   align-items: center;
+  flex-direction: column-reverse;
   height: 100%;
   justify-content: space-around;
   column-gap: 2rem;
@@ -68,5 +69,11 @@ onMounted(async () => {
 
 .loading-wrapper {
   height: 50vh;
+}
+
+@media only screen and (min-width: 720px) {
+  .detail-view {
+    flex-direction: row;
+  }
 }
 </style>
