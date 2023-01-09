@@ -5,12 +5,15 @@ import { ref, inject, type Ref, onUpdated } from "vue";
 import { RouterLink } from "vue-router";
 import type { CartItem } from "@/types";
 import { getCartSummary } from "@/api";
+import { useBreakpoints } from "@/composables/breakpoints";
 
 const isLoading = ref(false);
 
 const isVisible = inject<Ref<boolean>>("isVisibleCart");
 const items = ref<CartItem[]>([]);
 const remainder = ref<number>(0);
+
+const { width } = useBreakpoints();
 
 onUpdated(() => {
   fetchSummary();
@@ -31,7 +34,11 @@ const fetchSummary = async () => {
 </script>
 
 <template>
-  <ElDialog v-model="isVisible" title="My Cart">
+  <ElDialog
+    v-model="isVisible"
+    title="My Cart"
+    :width="width > 720 ? '50%' : '90%'"
+  >
     <div v-if="items && items.length > 0">
       <CartDialogItem
         v-for="item in items"
@@ -76,6 +83,9 @@ const fetchSummary = async () => {
 </template>
 
 <style scoped>
+.cart-dialog {
+  width: 80%;
+}
 .cart-content-wrapper {
   display: flex;
   flex-direction: column;
@@ -95,11 +105,11 @@ const fetchSummary = async () => {
 
 .cart-footer {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  row-gap: 8px;
 }
 
 .btn-view-cart {
-  width: 10rem;
   align-self: center;
   text-transform: uppercase;
   border: 1px solid #ffffff;
@@ -108,7 +118,6 @@ const fetchSummary = async () => {
 }
 
 .btn-checkout {
-  width: 10rem;
   align-self: center;
   text-transform: uppercase;
   border: 1px solid black;
@@ -118,5 +127,20 @@ const fetchSummary = async () => {
 
 .btn-cart-dialog {
   margin-right: 1rem;
+}
+
+.cart-footer button {
+  width: 100%;
+}
+
+@media only screen and (min-width: 720px) {
+  .cart-footer {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .cart-footer button {
+    width: 10rem;
+  }
 }
 </style>
