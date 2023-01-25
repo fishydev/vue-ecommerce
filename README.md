@@ -1,6 +1,6 @@
 # vue-ecommerce
 
-A shopping platform website, made with Vue 3 + Element Plus
+A shopping platform website, made with Vue 3 + Element Plus. [Backend repo](https://github.com/fishydev/ecommerce-backend)
 
 ## Recommended IDE Setup
 
