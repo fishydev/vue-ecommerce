@@ -59,7 +59,7 @@ const changedFilter = () => {
     @click="showFilter = !showFilter"
     >Filter</ElButton
   >
-  <Transition name="expand">
+  <Transition name="filter">
     <div class="products-filter-wrapper" v-if="width >= 720 || showFilter">
       <el-input
         v-model="searchQuery"
@@ -140,18 +140,20 @@ const changedFilter = () => {
   overflow-x: hidden;
   width: 100%;
 }
-
-.expand-enter-active,
-.expand-leave-active {
-  transition: height 0.5s;
+.filter-enter-active,
+.filter-leave-active {
+  transform-origin: top;
+  transition: transform 0.3s ease-in-out;
 }
 
-.expand-enter-from {
-  height: 0px;
-  padding: 0px;
+.filter-enter-to,
+.filter-leave-from {
+  transform: scaleY(1);
 }
-.expand-leave-to {
-  height: fit-content;
+
+.filter-enter-from,
+.filter-leave-to {
+  transform: scaleY(0);
 }
 .layout-vertical {
   display: flex;

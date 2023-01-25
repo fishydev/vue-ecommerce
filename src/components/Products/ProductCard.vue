@@ -27,9 +27,7 @@ const discountedPrice = computed(() => {
         </div>
       </template>
       <template #placeholder>
-        <el-image
-          src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
-        />
+        <div class="product-image-placeholder"></div>
       </template>
     </el-image>
     <div class="product-detail">
@@ -62,6 +60,12 @@ const discountedPrice = computed(() => {
   max-width: 100%;
   background-color: lightgrey;
   aspect-ratio: 1 / 1;
+}
+
+.product-image-placeholder {
+  width: 308px;
+  height: 308px;
+  background-color: lightgrey;
 }
 
 .discount-ribbon {
