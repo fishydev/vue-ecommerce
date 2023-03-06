@@ -12,9 +12,13 @@ const props = defineProps<{
 
 const subtotal = computed(() => {
   return props.cartContent.length > 0
-    ? props.cartContent.reduce((acc, cur) => acc + cur.total, 0)
+    ? Math.round(props.cartContent.reduce((acc, cur) => acc + cur.total, 0))
     : 0;
 });
+
+const format = (num: number) => {
+  return num.toFixed(2);
+};
 </script>
 
 <template>
@@ -47,13 +51,13 @@ const subtotal = computed(() => {
             </div>
             <div class="row">
               <span class="label">Shipping</span>
-              <span class="value">{{ `¥${0.05 * subtotal}` }}</span>
+              <span class="value">{{ `¥${format(0.05 * subtotal)}` }}</span>
             </div>
           </div>
           <div class="user-cart__total">
             <div class="row">
               <span class="label">Total</span>
-              <span class="value">{{ `¥${1.05 * subtotal}` }}</span>
+              <span class="value">{{ `¥${format(1.05 * subtotal)}` }}</span>
             </div>
           </div>
         </div>
