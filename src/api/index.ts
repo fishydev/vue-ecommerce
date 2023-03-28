@@ -10,6 +10,7 @@ import {
   substractItem,
 } from "./cart";
 import { checkoutCart } from "./checkout";
+import { getColorOptions } from "./color";
 export {
   getCategories,
   getCategoryOptions,
@@ -23,4 +24,5 @@ export {
   getCheckoutCartItems,
   substractItem,
   checkoutCart,
+  getColorOptions,
 };

@@ -6,6 +6,12 @@ export type Category = {
   alt: string;
 };
 
+export type Color = {
+  id: number;
+  name: string;
+  hex: string;
+};
+
 export type Product = {
   uuid: string;
   productTitle: string;
@@ -38,6 +44,7 @@ export type ProductFilter = {
   sort?: "htl" | "lth";
 };
 export type CategoryOption = Pick<Category, "uuid" | "type">;
+export type ColorOption = Color;
 
 export type RegisterPayload = {
   email: string;

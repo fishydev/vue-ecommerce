@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, toRaw, Transition } from "vue";
+import { ref, onMounted, toRaw } from "vue";
 import {
   ElCollapse,
   ElCollapseItem,
@@ -12,10 +12,12 @@ import {
   ElInput,
 } from "element-plus";
 import { getCategoryOptions } from "@/api/categories";
-import type { CategoryOption } from "@/types";
+import { getColorOptions } from "@/api/color";
+import type { CategoryOption, ColorOption } from "@/types";
 import { useBreakpoints } from "@/composables/breakpoints";
 
-const typeOptions = ref<CategoryOption[]>();
+const categoryOptions = ref<CategoryOption[]>();
+const colorOptions = ref<ColorOption[]>();
 const selectedTypes = ref<string[]>();
 const selectedColors = ref<string[]>();
 const sortOption = ref<string>();
@@ -27,8 +29,10 @@ const showFilter = ref<boolean>(true);
 
 const fetchOptions = async () => {
   try {
-    const result = (await getCategoryOptions()).data;
-    typeOptions.value = result;
+    const categoryResult = (await getCategoryOptions()).data;
+    const colorResult = (await getColorOptions()).data;
+    categoryOptions.value = categoryResult;
+    colorOptions.value = colorResult;
   } catch (error) {
     //
   } finally {
@@ -91,7 +95,7 @@ const changedFilter = () => {
                 @change="changedFilter"
               >
                 <el-checkbox
-                  v-for="option in typeOptions"
+                  v-for="option in categoryOptions"
                   :key="option.uuid"
                   :label="option.uuid"
                   >{{ option.type }}</el-checkbox
@@ -99,14 +103,6 @@ const changedFilter = () => {
               </el-checkbox-group>
             </template>
           </el-skeleton>
-          <!-- <el-checkbox-group class="layout-vertical">
-            <el-checkbox label="wireless earphones"
-              >Wireless Earphones</el-checkbox
-            >
-            <el-checkbox label="smart watches">Smart Watches</el-checkbox>
-            <el-checkbox label="headphones">Headphones</el-checkbox>
-            <el-checkbox label="wired earphones">Wired Earphones</el-checkbox>
-          </el-checkbox-group> -->
         </el-collapse-item>
         <el-collapse-item title="Color">
           <el-checkbox-group
@@ -114,15 +110,19 @@ const changedFilter = () => {
             class="layout-vertical"
             @change="changedFilter"
           >
-            <el-checkbox label="Black">Black</el-checkbox>
-            <el-checkbox label="Red">Red</el-checkbox>
-            <el-checkbox label="Green">Green</el-checkbox>
-            <el-checkbox label="White">White</el-checkbox>
-            <el-checkbox label="Sky Blue">Sky Blue</el-checkbox>
-            <el-checkbox label="Grey">Grey</el-checkbox>
-            <el-checkbox label="Yellow">Yellow</el-checkbox>
-            <el-checkbox label="Blue">Blue</el-checkbox>
-            <el-checkbox label="Pink">Pink</el-checkbox>
+            <el-checkbox
+              v-for="color in colorOptions"
+              :key="color.id"
+              :label="color.id"
+            >
+              <div class="color-option">
+                <div
+                  class="color-option__preview"
+                  :style="`background-color: ${color.hex}`"
+                ></div>
+                {{ color.name }}
+              </div>
+            </el-checkbox>
           </el-checkbox-group>
         </el-collapse-item>
       </el-collapse>
@@ -160,6 +160,19 @@ const changedFilter = () => {
   flex-direction: column;
   padding: 1rem;
   align-items: start;
+}
+
+.color-option {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.color-option__preview {
+  aspect-ratio: 10/16;
+  width: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  border-radius: 2px;
 }
 
 @media only screen and (min-width: 720px) {
